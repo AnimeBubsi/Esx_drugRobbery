@@ -5,5 +5,4 @@ all you have to is drag and drop and write "start esx_drugRobbery" in server.cfg
 Original script = https://github.com/esx-community/esx_vangelico_robbery
 
 Preview video = https://youtu.be/7eQYTG_Ow6A!
-Locations = ![paikat](https://user-images.githubusercontent.com/95187459/165084547-e92c217c-0225-4671-b81c-0973aba753b3.jpg)
-
+Locations = ![locations](https://user-images.githubusercontent.com/95187459/165084988-6add736e-8de5-4044-8225-db38ba1fc7b8.jpg)
