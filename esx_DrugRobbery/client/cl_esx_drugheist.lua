@@ -146,7 +146,7 @@ end)
 Citizen.CreateThread(function()
       
 	while true do
-		local pos = GetEntityCoords(GetPlayerPed(-1), true)
+		local pos = GetEntityCoords(PlayerPedId(), true)
 
 		for k,v in pairs(Stores)do
 			local pos2 = v.position
@@ -160,7 +160,7 @@ Citizen.CreateThread(function()
 							DisplayHelpText(_U('press_to_rob'))
 						end
 						incircle = true
-						if IsPedShooting(GetPlayerPed(-1)) then
+						if IsPedShooting(PlayerPedId()) then
                                                 if Config.treppu then
 							    if reppu == 40 or reppu == 41 or reppu == 44 or reppu == 45 then
 							        ESX.TriggerServerCallback('esx_drugheist_ryosto:aloitus', function(CopsConnected)
@@ -200,14 +200,14 @@ Citizen.CreateThread(function()
 					DrawText3D(v.x, v.y, v.z, '~w~[~g~E~w~] ' .. _U('press_to_collect'), 0.6)
 					if IsControlJustPressed(0, 38) then
 						animazione = true
-					    SetEntityCoords(GetPlayerPed(-1), v.x, v.y, v.z-0.95)
-					    SetEntityHeading(GetPlayerPed(-1), v.heading)
+					    SetEntityCoords(PlayerPedId(), v.x, v.y, v.z-0.95)
+					    SetEntityHeading(PlayerPedId(), v.heading)
 						v.isOpen = true 
                                             ExecuteCommand("e mechanic4")
 					    TriggerEvent("mt:missiontext", _U('collectinprogress'), 3000)
 					    DrawSubtitleTimed(5000, 1)
 					    Citizen.Wait(5000)
-					    ClearPedTasksImmediately(GetPlayerPed(-1))
+					    ClearPedTasksImmediately(PlayerPedId())
 					    TriggerServerEvent('esx_drugheist_ryosto:saalis')
 					    PlaySound(-1, "PICK_UP", "HUD_FRONTEND_DEFAULT_SOUNDSET", 0, 0, 1)
 					    laatikko = laatikko+1
@@ -232,4 +232,5 @@ local pos2 = Stores[store].position
 		Citizen.Wait(0)
 	end
 end)
+
 
