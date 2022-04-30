@@ -18,7 +18,7 @@ function CountCops()
 
 	for i=1, #xPlayers, 1 do
 		local xPlayer = ESX.GetPlayerFromId(xPlayers[i])
-		if xPlayer.job.name == 'police' then
+		if xPlayer.job.name == Config.tyo then
 			CopsConnected = CopsConnected + 1
 		end
 	end
@@ -35,7 +35,7 @@ AddEventHandler('esx_drugheist_ryosto:endrob', function(robb)
 	rob = false
 	for i=1, #xPlayers, 1 do
  		local xPlayer = ESX.GetPlayerFromId(xPlayers[i])
- 		if xPlayer.job.name == 'police' then
+ 		if xPlayer.job.name == Config.tyo then
 			TriggerClientEvent('esx:showNotification', xPlayers[i], _U('end'))
 			TriggerClientEvent('esx_drugheist_ryosto:killblip', xPlayers[i])
 		end
@@ -69,7 +69,7 @@ AddEventHandler('esx_drugheist_ryosto:rob', function(robb)
 			rob = true
 			for i=1, #xPlayers, 1 do
 				local xPlayer = ESX.GetPlayerFromId(xPlayers[i])
-				if xPlayer.job.name == 'police' then
+				if xPlayer.job.name == Config.tyo then
 					TriggerClientEvent('esx:showNotification', xPlayers[i], _U('rob_in_prog') .. store.nimi)
 					TriggerClientEvent('esx_drugheist_ryosto:setblip', xPlayers[i], Stores[robb].position)
                                         TriggerClientEvent('esx:showNotification', source, _U('Poliisi'))
@@ -88,13 +88,13 @@ AddEventHandler('esx_drugheist_ryosto:rob', function(robb)
 end)
 
 Items = {
-  "coke",
-  "amfe_pooch",
-  "amfe",
-  "cannabis",
-  "marijuana",
-  "coke_pooch",
-  "Opium"
+  Config.tavara1,
+  Config.tavara,
+  Config.tavara3,
+  Config.tavara4,
+  Config.tavara5,
+  Config.tavara6,
+  Config.tavara7
 }
 
 function RandomItem()
@@ -116,5 +116,6 @@ ESX.RegisterServerCallback('esx_drugheist_ryosto:aloitus', function(source, cb)
 
 	cb(CopsConnected)
 end)
+
 
 
