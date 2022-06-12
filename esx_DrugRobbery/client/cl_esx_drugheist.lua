@@ -72,6 +72,7 @@ end)
 
 RegisterNetEvent('esx_drugheist:loppu')
 AddEventHandler('esx_drugheist:loppu', function(robb)
+if holdingup then
 	ExecuteCommand("e tablet2")
 	exports['progressBars']:startUI(5100, (_U('lopetat')))
 	Citizen.Wait(5100)
@@ -79,6 +80,9 @@ AddEventHandler('esx_drugheist:loppu', function(robb)
 	TriggerEvent('esx:showNotification', (_U('lopetit')))
         TriggerServerEvent('esx_drugheist_ryosto:lopetus', source)
          	holdingup = false
+else
+TriggerEvent('esx:showNotification', (_U('etryosta')))
+end
 end)
 
 RegisterNetEvent('esx_drugheist_ryosto:currentlyrobbing')
