@@ -28,6 +28,10 @@ end
 
 CountCops()
 
+RegisterCommand(Config.komento, function(source)
+	TriggerClientEvent('esx_drugheist:loppu', source)
+ end)
+
 RegisterServerEvent('esx_drugheist_ryosto:endrob')
 AddEventHandler('esx_drugheist_ryosto:endrob', function(robb)
 	local source = source
@@ -46,6 +50,21 @@ AddEventHandler('esx_drugheist_ryosto:endrob', function(robb)
 		TriggerClientEvent('esx:showNotification', source, _U('ryosto_has_ended') .. Stores[robb].nimi)
 	end
 end)
+
+RegisterServerEvent('esx_drugheist_ryosto:lopetus')
+AddEventHandler('esx_drugheist_ryosto:lopetus', function(robb)
+	local source = source
+	local xPlayers = ESX.GetPlayers()
+	rob = false
+	for i=1, #xPlayers, 1 do
+ 		local xPlayer = ESX.GetPlayerFromId(xPlayers[i])
+ 		if xPlayer.job.name == Config.tyo then
+			TriggerClientEvent('esx:showNotification', xPlayers[i], _U('ryosto_cancelled'))
+			TriggerClientEvent('esx_drugheist_ryosto:killblip', xPlayers[i])
+		end
+	end
+end)
+
 RegisterServerEvent('esx_drugheist_ryosto:rob')
 AddEventHandler('esx_drugheist_ryosto:rob', function(robb)
 
@@ -116,6 +135,9 @@ ESX.RegisterServerCallback('esx_drugheist_ryosto:aloitus', function(source, cb)
 
 	cb(CopsConnected)
 end)
+
+
+
 
 
 
