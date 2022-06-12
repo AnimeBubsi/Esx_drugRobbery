@@ -70,6 +70,17 @@ AddEventHandler("mt:missiontext", function(text, time)
     DrawSubtitleTimed(time, 1)
 end)
 
+RegisterNetEvent('esx_drugheist:loppu')
+AddEventHandler('esx_drugheist:loppu', function(robb)
+	ExecuteCommand("e tablet2")
+	exports['progressBars']:startUI(5100, (_U('lopetat')))
+	Citizen.Wait(5100)
+	ClearPedTasksImmediately(PlayerPedId())
+	TriggerEvent('esx:showNotification', (_U('lopetit')))
+        TriggerServerEvent('esx_drugheist_ryosto:lopetus', source)
+         	holdingup = false
+end)
+
 RegisterNetEvent('esx_drugheist_ryosto:currentlyrobbing')
 AddEventHandler('esx_drugheist_ryosto:currentlyrobbing', function(robb)
 	holdingup = true
@@ -113,7 +124,6 @@ Citizen.CreateThread(function()
 	end
 end)
 
-animazione = false
 incircle = false
 soundid = GetSoundId()
 
@@ -190,7 +200,7 @@ Citizen.CreateThread(function()
 			end
 		end
 		if holdingup then
-			drawTxt(0.3, 1.4, 0.45, _U('tlaatikko') .. ' :~r~ ' .. laatikko .. '/' .. Config.Maxlaatikko, 185, 185, 185, 255)
+			drawTxt(0.3, 1.4, 0.45, _U('tlaatikko') .. ' :~r~ ' .. laatikko .. '/' .. 25, 185, 185, 185, 255)
 
 			for i,v in pairs(laatikkos) do 
 				if(GetDistanceBetweenCoords(pos, v.x, v.y, v.z, true) < 10.0) and not v.isOpen and Config.EnableMarker then 
@@ -199,7 +209,6 @@ Citizen.CreateThread(function()
 				if(GetDistanceBetweenCoords(pos, v.x, v.y, v.z, true) < 0.75) and not v.isOpen then 
 					DrawText3D(v.x, v.y, v.z, '~w~[~g~E~w~] ' .. _U('press_to_collect'), 0.6)
 					if IsControlJustPressed(0, 38) then
-						animazione = true
 					    SetEntityCoords(PlayerPedId(), v.x, v.y, v.z-0.95)
 					    SetEntityHeading(PlayerPedId(), v.heading)
 						v.isOpen = true 
@@ -211,9 +220,8 @@ Citizen.CreateThread(function()
 					    TriggerServerEvent('esx_drugheist_ryosto:saalis')
 					    PlaySound(-1, "PICK_UP", "HUD_FRONTEND_DEFAULT_SOUNDSET", 0, 0, 1)
 					    laatikko = laatikko+1
-					    animazione = false
 
-						if laatikko == Config.Maxlaatikko then 
+						if laatikko == 25 then 
 						    for i,v in pairs(laatikkos) do 
 								v.isOpen = false
 								laatikko = 0
@@ -232,5 +240,3 @@ local pos2 = Stores[store].position
 		Citizen.Wait(0)
 	end
 end)
-
-
