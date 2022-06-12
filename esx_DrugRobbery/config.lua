@@ -5,7 +5,7 @@ Config.treppu = false -- true if need bag false if dont need bag
 
 Config.reppu = {40, 41, 44, 45}
 
-Config.RequiredCopsRob = 0
+Config.RequiredCopsRob = 6
 
 Config.MinHuume = 2 -- min drug
 
