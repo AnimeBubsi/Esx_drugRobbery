@@ -29,7 +29,7 @@ end
 CountCops()
 
 RegisterCommand(Config.komento, function(source)
-	TriggerClientEvent('esx_drugheist:loppu', source)
+TriggerClientEvent('esx_drugheist:loppu', source)
  end)
 
 RegisterServerEvent('esx_drugheist_ryosto:endrob')
@@ -135,9 +135,3 @@ ESX.RegisterServerCallback('esx_drugheist_ryosto:aloitus', function(source, cb)
 
 	cb(CopsConnected)
 end)
-
-
-
-
-
-
