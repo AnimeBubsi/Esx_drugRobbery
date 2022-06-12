@@ -5,7 +5,7 @@ Config.treppu = false -- true if need bag false if dont need bag
 
 Config.reppu = {40, 41, 44, 45}
 
-Config.RequiredCopsRob = 6
+Config.RequiredCopsRob = 0
 
 Config.MinHuume = 2 -- min drug
 
@@ -21,7 +21,7 @@ Config.tavara7 = 'Opium' -- Item 7
 
 Config.tyo = 'police' -- Job who get an alarm
 
-Config.Maxlaatikko = 25 -- dont touch :D
+Config.komento = "lopeta" -- Command what stop robbery
 
 Config.SecBetwNextRob = 3600 --1 hour
 
@@ -41,3 +41,4 @@ Stores = {
 
 
 -- Sry for bad english i hope you understand my dog water english - Bubsi :D
+
