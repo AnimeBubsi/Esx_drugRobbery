@@ -8,7 +8,7 @@ Config.blipScale = 0.8 -- Change if you want (size of blip)
 Config.blipColour = 2 -- Change if you want (Colour of blip)
 
 -- Discord logs
-Config.webhook = 'https://discord.com/api/webhooks/987082303102681158/PCyNmO6aSGg73n77I2XK4BrCW9kcRi6eZDfWdWinIRpY-exwQYgo1GqNZ740CA1CjiS3' -- Your dc webhook
+Config.webhook = 'WEBHOOK HERE!' -- Your dc webhook
 Config.botname = 'ValorRp' -- bots name
 -- Backback
 Config.treppu = false -- true if need bag false if dont need bag
