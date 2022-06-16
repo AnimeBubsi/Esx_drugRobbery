@@ -62,29 +62,25 @@ function DisplayHelpText(str)
 	AddTextComponentString(str)
 	DisplayHelpTextFromStringLabel(0, 0, 1, -1)
 end
-RegisterNetEvent("mt:missiontext")
-AddEventHandler("mt:missiontext", function(text, time)
-    ClearPrints()
-    SetTextEntry_2("STRING")
-    AddTextComponentString(text)
-    DrawSubtitleTimed(time, 1)
-end)
-
 RegisterNetEvent('esx_drugheist:loppu')
 AddEventHandler('esx_drugheist:loppu', function(robb)
-if holdingup then
+	if holdingup and Config.animaatio then
 	ExecuteCommand("e tablet2")
 	exports['progressBars']:startUI(5100, (_U('lopetat')))
 	Citizen.Wait(5100)
 	ClearPedTasksImmediately(PlayerPedId())
 	TriggerEvent('esx:showNotification', (_U('lopetit')))
         TriggerServerEvent('esx_drugheist_ryosto:lopetus', source)
+	         	holdingup = false
+	elseif holdingup then
+	ClearPedTasksImmediately(PlayerPedId())
+	TriggerEvent('esx:showNotification', (_U('lopetit')))
+        TriggerServerEvent('esx_drugheist_ryosto:lopetus', source)
          	holdingup = false
 else
-TriggerEvent('esx:showNotification', (_U('etryosta')))
-end
+ TriggerEvent('esx:showNotification', (_U('etryosta')))
+   end
 end)
-
 RegisterNetEvent('esx_drugheist_ryosto:currentlyrobbing')
 AddEventHandler('esx_drugheist_ryosto:currentlyrobbing', function(robb)
 	holdingup = true
@@ -117,16 +113,21 @@ end)
 Citizen.CreateThread(function()
 	for k,v in pairs(Stores)do
 		local ve = v.position
+		if Config.useblip then
 
 		local blip = AddBlipForCoord(ve.x, ve.y, ve.z)
-		SetBlipSprite(blip, 140)
-		SetBlipScale(blip, 0.8)
+		SetBlipSprite(blip, Config.blipSprite)
+		SetBlipScale(blip, Config.blipScale)
+                SetBlipColour(blip, Config.blipColour)
 		SetBlipAsShortRange(blip, true)
 		BeginTextCommandSetBlipName("STRING")
 		AddTextComponentString(_U('shop_ryosto'))
 		EndTextCommandSetBlipName(blip)
+	        else
+	     end
 	end
-end)
+   end)
+
 
 incircle = false
 soundid = GetSoundId()
@@ -217,9 +218,9 @@ Citizen.CreateThread(function()
 					    SetEntityHeading(PlayerPedId(), v.heading)
 						v.isOpen = true 
                                             ExecuteCommand("e mechanic4")
-					    TriggerEvent("mt:missiontext", _U('collectinprogress'), 3000)
-					    DrawSubtitleTimed(5000, 1)
-					    Citizen.Wait(5000)
+					    exports['progressBars']:startUI(4000, (_U('collectinprogress')))
+					    DrawSubtitleTimed(4000, 1)
+					    Citizen.Wait(4000)
 					    ClearPedTasksImmediately(PlayerPedId())
 					    TriggerServerEvent('esx_drugheist_ryosto:saalis')
 					    PlaySound(-1, "PICK_UP", "HUD_FRONTEND_DEFAULT_SOUNDSET", 0, 0, 1)
