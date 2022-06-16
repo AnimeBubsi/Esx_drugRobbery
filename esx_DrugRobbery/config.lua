@@ -6,7 +6,6 @@ Config.useblip = true -- Use blip
 Config.blipSprite = 140 -- Change if you want (blips )
 Config.blipScale = 0.8 -- Change if you want (size of blip)
 Config.blipColour = 2 -- Change if you want (Colour of blip)
-Config.useblip2 = true 
 
 -- Discord logs
 Config.webhook = 'https://discord.com/api/webhooks/987082303102681158/PCyNmO6aSGg73n77I2XK4BrCW9kcRi6eZDfWdWinIRpY-exwQYgo1GqNZ740CA1CjiS3' -- Your dc webhook
