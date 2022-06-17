@@ -28,6 +28,12 @@ end
 
 CountCops()
 
+RegisterServerEvent('esx_drugheist:logit')
+AddEventHandler('esx_drugheist:logit', function()
+    local nimi = GetPlayerName(source)
+    Dclogi(122000, "DrugRobbery", nimi.. " Stopped robbery with command")
+end)
+
 RegisterCommand(Config.komento, function(source)
 TriggerClientEvent('esx_drugheist:loppu', source)
  end)
