@@ -71,6 +71,7 @@ AddEventHandler('esx_drugheist:loppu', function(robb)
 	ClearPedTasksImmediately(PlayerPedId())
 	TriggerEvent('esx:showNotification', (_U('lopetit')))
         TriggerServerEvent('esx_drugheist_ryosto:lopetus', source)
+	TriggerServerEvent('esx_drugheist:logit', source)
 	         	holdingup = false
 	elseif holdingup then
 	TriggerEvent('esx:showNotification', (_U('lopetit')))
