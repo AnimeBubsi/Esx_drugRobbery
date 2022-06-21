@@ -1,6 +1,6 @@
 Config = {}
 
-Config.Locale = 'fi' -- locale there is fi.lua but you can do your own if you want :)
+Config.Locale = 'fi' -- locale there is fi.lua and shitty en.lua but you can do your own if you want :)
 -- Blip
 Config.useblip = true -- Use blip
 Config.blipSprite = 140 -- Change if you want (blips )
