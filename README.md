@@ -1,6 +1,9 @@
 This is Drug Robbery for fivem !
 First of all you need cayo perico Then you need "esx_policejob" and "progressBars"!
 all you have to is drag and drop and write "start esx_drugRobbery" in server.cfg and dont forget SQL its very important!
+If you want to say something to me add me in discord Bubsi#6775
+
+
 
 Original script = https://github.com/esx-community/esx_vangelico_robbery
 
