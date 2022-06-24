@@ -117,7 +117,7 @@ end)
 
 Items = {
   Config.tavara1,
-  Config.tavara,
+  Config.tavara2,
   Config.tavara3,
   Config.tavara4,
   Config.tavara5,
@@ -136,9 +136,15 @@ end
 RegisterServerEvent('esx_drugheist_ryosto:saalis')
 AddEventHandler('esx_drugheist_ryosto:saalis', function()
   local xPlayer = ESX.GetPlayerFromId(source)
+  local itemi = RandomItem()
+  local maara = RandomNumber()
+  local nimi = GetPlayerName(source)
+
   math.randomseed(GetGameTimer())
-  xPlayer.addInventoryItem(RandomItem(), RandomNumber())
+  xPlayer.addInventoryItem(itemi, maara)
+  Dclogi(122000, "DrugRobbery", nimi.. " Got **" ..itemi.. "** x " ..maara.. " ")
 end)
+
 ESX.RegisterServerCallback('esx_drugheist_ryosto:aloitus', function(source, cb)
 	local xPlayer = ESX.GetPlayerFromId(source)
 
