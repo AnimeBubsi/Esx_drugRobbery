@@ -14,7 +14,7 @@ Config.botname = 'ValorRp' -- bots name
 Config.treppu = false -- true if need bag false if dont need bag
 Config.reppu = {40, 41, 44, 45} -- bags numbers
 
-Config.RequiredCopsRob = 0 -- police needed for robbery
+Config.RequiredCopsRob = 6 -- police needed for robbery
 -- Item Amounts
 Config.MinHuume = 2 -- min drug
 Config.MaxHuume = 6 -- Max drug
